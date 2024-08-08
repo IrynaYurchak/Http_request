@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="block">Blogs</div>
+    <div class="content">
+      <input type="text" [(ngModel)]="title" placeholder="Title">
+      <textarea class="text" [(ngModel)]="text" placeholder="Text here"></textarea>
+      <input  type="text"  [(ngModel)]="author" placeholder="Author here">
+      <button  [disabled]="!title || !text || !author"  *ngIf="!editStatus" (click)="create()" class="btn-add">Add</button>
+      <button *ngIf="editStatus" (click)="saveEdit()" class="btn-saveEdit">Save edit</button>
+  
+      <div>
+        <table class="table-content">
+          <thead class="name">
+            <tr>
+              <th class="number">#</th>
+              <th>Title</th>
+              <th>Text</th>
+              <th>Author</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody  *ngFor="let post of  adminPost">
+            <tr >
+              <td>{{post.id}}</td>
+              <td>{{post.title}} </td>
+              <td>{{post.text|slice:0:20}} 
+                <span *ngIf="post.text.length > 20">...</span> 
+              </td>
+              <td>{{post.author}}</td>
+              <th><button *ngIf="adminPost.length > 0" (click)="updata(post)" class="btn-edit">Edit</button></th>
+              <th><button  *ngIf="adminPost.length > 0" (click)="delete(post)" class="btn-delete">Delete</button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+

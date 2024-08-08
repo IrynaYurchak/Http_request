@@ -1,0 +1,10 @@
+<div *ngIf="userPost.length > 0" class="blog-container">
+  <div class="box" *ngFor="let post of userPost">
+    <div class="img-box">
+      <img [src]="post.img"/>
+    </div>
+    <p class="author">{{post.author}}</p>
+    <h2 class="title">{{post.title}}</h2>
+    <p class="description">{{post.text}}</p>
+  </div>
+</div>
